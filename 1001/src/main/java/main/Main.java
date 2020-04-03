@@ -14,6 +14,9 @@
 package main;
 
 import java.io.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Locale;
 
 public class Main {
     StreamTokenizer in;
@@ -23,9 +26,12 @@ public class Main {
         new Main().run(new InputStreamReader(System.in));
     }
 
-    int nextInt() throws IOException {
-        in.nextToken();
-        return (int) in.nval;
+    Deque<Double> nextInt() throws IOException {
+        ArrayDeque<Double> res = new ArrayDeque<>();
+        while (in.nextToken() != -1) {
+            res.add(in.nval);
+        }
+        return res;
     }
 
     public void run(Reader input) throws IOException {
@@ -36,8 +42,12 @@ public class Main {
     }
 
     void solve() throws IOException {
-        int a = nextInt();
-        int b = nextInt();
-        out.print(a + b);
+        Deque<Double> a = nextInt();
+        Double d;
+        while (a.peekLast() != null) {
+            d = a.peekLast();
+            out.println(String.format(Locale.US, "%.4f", StrictMath.sqrt(d)));
+            a.removeLast();
+        }
     }
 }

@@ -19,6 +19,7 @@ import org.junit.contrib.java.lang.system.SystemOutRule;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
 
@@ -28,11 +29,17 @@ public class MainTest {
 
     //@DisplayName("Sum of 1 and 3 shouldbe 4")
     @Test
-    public void sum13eq4() throws IOException {
+    public void sqrts() throws IOException {
         Main main = new Main();
-        StringReader sr = new StringReader(String.format("1%n3"));
+        StringReader sr = new StringReader(String.format("1427  0   %n" +
+                "%n" +
+                "   876652098643267843 %n" +
+                "5276538"));
         main.run(sr);
-        assertEquals("4", systemOutRule.getLog());
+        assertEquals(String.format(Locale.US, "2297.0716%n" +
+                "936297014.1164%n" +
+                "0.0000%n" +
+                "37.7757%n"), systemOutRule.getLog());
     }
 
     @Test

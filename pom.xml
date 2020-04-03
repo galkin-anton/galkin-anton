@@ -11,6 +11,7 @@
 
   <modules>
     <module>1000</module>
+    <module>1001</module>
   </modules>
 
   <properties>
