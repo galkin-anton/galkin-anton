@@ -2,8 +2,8 @@ package net.bytebuddy;
 
 import net.bytebuddy.animal.Lion;
 import net.bytebuddy.dynamic.DynamicType;
-import net.bytebuddy.dynamic.loading.ClassLoadingStrategy;
 
+import java.io.File;
 import java.io.IOException;
 
 public class CreateObject {
@@ -25,11 +25,11 @@ public class CreateObject {
                                             .name("LionRedifine")
                                             .make();
 
-        Class<? extends DynamicType.Loaded> aClass =
-          unloadSubClass.load(Lion.class.getClass().getClassLoader(),
-                          ClassLoadingStrategy.Default.WRAPPER)
-                        .getClass();
+//        Class<? extends DynamicType.Loaded> aClass =
+//          unloadSubClass.load(Lion.class.getClass().getClassLoader(),
+//                          ClassLoadingStrategy.Default.WRAPPER)
+//                        .getClass();
         
-        //unloadSubClass.saveIn(new File("target"));
+        unloadSubClass.saveIn(new File("target"));
     }
 }

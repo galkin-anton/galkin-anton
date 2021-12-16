@@ -2,7 +2,7 @@ package net.bytebuddy;
 
 import net.bytebuddy.agent.ByteBuddyAgent;
 import net.bytebuddy.animal.Lion;
-import net.bytebuddy.animal.Tiger;
+import net.bytebuddy.animal.LionSmall;
 import net.bytebuddy.dynamic.loading.ClassReloadingStrategy;
 
 /**
@@ -23,11 +23,13 @@ public class RedefineClass {
         lion.makeRoar();
 
         new ByteBuddy()
-          .redefine(Tiger.class)
+          .redefine(LionSmall.class)
           .name(Lion.class.getName())
           .make()
           .load(Lion.class.getClassLoader(), ClassReloadingStrategy.fromInstalledAgent());
         
         lion.makeRoar();
+        var lion1 = new Lion();
+        lion1.makeRoar();
     }
 }

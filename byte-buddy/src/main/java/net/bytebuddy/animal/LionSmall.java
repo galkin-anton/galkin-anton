@@ -1,5 +1,7 @@
 package net.bytebuddy.animal;
 
+import net.bytebuddy.implementation.bind.annotation.This;
+
 /**
  * galki
  * <p>
@@ -7,11 +9,8 @@ package net.bytebuddy.animal;
  * <p>
  * galkin-anton
  */
-public class LionSmall extends Lion {
-
-    @Override
-    public void makeRoar() {
-        System.out.println("this is roar from lionSmall");
-        super.makeRoar();
+public class LionSmall {
+    public static void makeRoar(@This Lion m) {
+        System.out.println("this is roar from lionSmall from class " + m.getClass().getName());
     }
 }
